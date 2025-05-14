@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: msa-demo-auth-api
+  profiles:
+    active: local
+  # messagesource
+  messages:
+    basename: message/messages
+    encoding: UTF-8
+    fallbackToSystemLocale: false
+    alwaysUseMessageFormat: true
+
+
+# swaager (springdoc)
+springdoc:
+#  packages-to-scan: com.example # 패키지별
+  swagger-ui:
+    groups-order: DESC
+    tags-sorter: alpha   # API 정렬 alpah
+    operations-sorter: method  # 엔드포인트 정렬 method/alpha
+#    disable-swagger-default-url: true
+#    display-request-duration: true
+#    defaultModelsExpandDepth: 2
+#    defaultModelExpandDepth: 2
+  api-docs:
+    path: /api-docs
+#  show-actuator: true
+#  default-consumes-media-type: application/json # 기본 요청, 응답 형태를 JSON으로 설정
+#  default-produces-media-type: application/json
+#  writer-with-default-pretty-printer: true
+#  model-and-view-allowed: true
+#  paths-to-match:
+#    - /**
