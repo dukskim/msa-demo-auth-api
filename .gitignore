@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# macOS resource fork metadata files
+._*
