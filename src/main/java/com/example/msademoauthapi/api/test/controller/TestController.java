@@ -1,4 +1,4 @@
-package com.example.msademoauthapi.api.test.presentation;
+package com.example.msademoauthapi.api.test.controller;
 
 import com.example.msademoauthapi.api.test.dto.request.TestRequest;
 import com.example.msademoauthapi.api.test.dto.response.TestResponse;

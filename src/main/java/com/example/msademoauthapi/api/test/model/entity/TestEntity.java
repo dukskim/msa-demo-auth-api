@@ -1,4 +1,4 @@
-package com.example.msademoauthapi.api.test.domain.entity;
+package com.example.msademoauthapi.api.test.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

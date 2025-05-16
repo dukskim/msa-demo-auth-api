@@ -1,4 +1,4 @@
-package com.example.msademoauthapi.api.test.application;
+package com.example.msademoauthapi.api.test.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

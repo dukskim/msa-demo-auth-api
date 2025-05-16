@@ -1,6 +1,6 @@
-package com.example.msademoauthapi.api.test.domain.repository;
+package com.example.msademoauthapi.api.test.repository;
 
-import com.example.msademoauthapi.api.test.domain.entity.TestEntity;
+import com.example.msademoauthapi.api.test.model.entity.TestEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
