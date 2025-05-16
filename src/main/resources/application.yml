@@ -9,6 +9,22 @@ spring:
     encoding: UTF-8
     fallbackToSystemLocale: false
     alwaysUseMessageFormat: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testdb
+    username: dev
+    password: dev
+  jpa:
+    show-sql: true
+    generate-ddl: false #true
+    hibernate:
+      ddl-auto: none #validate #create
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+        generate_statistics: false #true
 
 
 # swaager (springdoc)

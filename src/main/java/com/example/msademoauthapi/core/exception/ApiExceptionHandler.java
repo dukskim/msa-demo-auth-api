@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.server.ServerWebExchange;
 
 import java.time.LocalDateTime;
@@ -28,7 +29,7 @@ public class ApiExceptionHandler {
      * 상태코드에 따른 응답
      */
     @ExceptionHandler(ApiException.class)
-    public ResponseEntity<?> handleConstraintViolation(final ApiException ex, ServerWebExchange exchange, Locale locale) {
+    public ResponseEntity<?> handleConstraintViolation(final ApiException ex, WebRequest request, Locale locale) {
         String code = Optional.ofNullable(ex.getCode()).orElse(ErrorCode.SYSTEM_ERROR.getCode());
         ErrorCode errorCode = Optional.ofNullable(ErrorCode.findByCode(code)).orElse(ErrorCode.SYSTEM_ERROR);
         String msg = Optional.ofNullable(ex.getMsg()).orElse(errorCode.getMsg());
@@ -46,7 +47,7 @@ public class ApiExceptionHandler {
                 }
             }
         }
-        Map<String, Object> errorInfo = this.errorHashMap(ex, exchange, null);
+        Map<String, Object> errorInfo = this.errorHashMap(ex, request, null);
         ApiResult apiResult = new ApiResult(code, msg);
         apiResult.setData(errorInfo);
         //log.info("[Error] UserHandleException Code: {} , Msg: {}", apiResult.getCode(), apiResult.getMsg());
@@ -57,10 +58,10 @@ public class ApiExceptionHandler {
     /**
      * 공통 예외 정보 - 예외 정보들 포함하여 응답
      */
-    private Map<String, Object> errorHashMap(final Exception ex, ServerWebExchange exchange, String exceptionKey) {
+    private Map<String, Object> errorHashMap(final Exception ex, WebRequest request, String exceptionKey) {
         Map<String, Object> hashMap = new LinkedHashMap<>();
 
-        String path = exchange.getRequest().getURI().getPath(); // 요청 경로
+        String path = request.getDescription(false); // 요청 경로
 
         hashMap.put("path", path);
         hashMap.put("error", ex.getClass().getSimpleName());
